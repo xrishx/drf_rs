@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     "django_filters",
     "requests",
     'drfapp',  # Your app name
-    "drfapp.viewsets",  # Ensure this is included if you have viewsets in a separate module
-    "drfapp.serializers",  # Ensure this is included if you have serializers in a separate module
-    "drfapp.routers",  # Ensure this is included if you have routers in a separate module
-    "drfapp.utilities",  # Ensure this is included if you have utilities in a separate module
+    # "drfapp.viewsets",  
+    # "drfapp.serializers",  
+    # "drfapp.routers",  
+    # "drfapp.utilities", 
 ]
 
 MIDDLEWARE = [
@@ -137,3 +137,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+APPEND_SLASH = True

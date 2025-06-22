@@ -47,8 +47,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # API Authentication and Documentation
     # api/ go to the API documentation
-    path('api-auth/)', include('rest_framework.urls')),
-    path('api/', include('drfapp.routers.routers')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include(drfapp_router.urls)),
     # Swagger Documentation
     # just api go to the Swagger UI documentation
     path('',schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

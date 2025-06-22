@@ -8,6 +8,7 @@ from ..serializers.drf_serializers import (
     BookCreateSerializers,
 )
 from rest_framework.decorators import action
+from ..utilities.filters import BookFilter
 
 class bookViewsets(viewsets.ModelViewSet):
     serializer_class = BookListSerializers
@@ -21,6 +22,7 @@ class bookViewsets(viewsets.ModelViewSet):
         'title': ['exact'],
         'published_date': ['exact', 'year__gt', 'year__lt'],
     }
+    filterset_class = BookFilter
 
 # Get all books
     def get_queryset(self):
