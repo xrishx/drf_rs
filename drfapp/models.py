@@ -27,11 +27,3 @@ class Book(models.Model):
             self.slug = f'{slugify(self.title)}-{str(self.public_id)[1:5]}-{str(self.public_id)[-1:-5]}'
         super().save(*args, **kwargs)
 
-class UserVisit(models.Model):
-    ip_address = models.GenericIPAddressField()
-    device_info = models.CharField(max_length=255)
-    visit_time = models.DateTimeField()
-
-    def __str__(self):
-        return f"{self.ip_address} - {self.device_info} at {self.visit_time}"
-    
