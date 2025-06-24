@@ -32,7 +32,9 @@ class bookViewsets(viewsets.ModelViewSet):
         return queryset
 
     def get_serializer_class(self):
-        if self.action in ['create', 'update', 'partial_update']:
+        if self.action in ['list']:
+            return BookListSerializers
+        elif self.action in ['create', 'update', 'partial_update']:
             return BookCreateSerializers
         elif self.action == 'retrieve':
             return BookRetrieveSerializers
