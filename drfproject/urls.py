@@ -24,6 +24,7 @@ from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
 from drfapp.routers.routers import router as drfapp_router
+from drfapp.viewsets import drfapp_viewsets
 
 router = routers.DefaultRouter()
 router.registry.extend(drfapp_router.registry)
@@ -53,6 +54,8 @@ urlpatterns = [
     # just api go to the Swagger UI documentation
     path('',schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('simple', drfapp_viewsets.simple_view),
+
 ]
 
 # Need this to correctly view media files in development

@@ -9,6 +9,8 @@ from ..serializers.drf_serializers import (
 )
 from rest_framework.decorators import action
 from ..utilities.filters import BookFilter
+from django.shortcuts import render
+
 
 class bookViewsets(viewsets.ModelViewSet):
     serializer_class = BookListSerializers
@@ -40,3 +42,7 @@ class bookViewsets(viewsets.ModelViewSet):
     def action_name(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
     
+
+def simple_view(request):
+        data = {'content': "I am trying templates"}
+        return render(request, 'first.html', data)
