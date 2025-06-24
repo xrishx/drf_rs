@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     "django_filters",
     "requests",
-    'drfapp',  # Your app name
+    'drfapp',
+    'drfapp2',
     # "drfapp.viewsets",  
     # "drfapp.serializers",  
     # "drfapp.routers",  

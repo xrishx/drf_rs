@@ -25,6 +25,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from drfapp.routers.routers import router as drfapp_router
 from drfapp.viewsets import drfapp_viewsets
+from drfapp2.routers.routers import router as drfapp2_router    
 
 router = routers.DefaultRouter()
 router.registry.extend(drfapp_router.registry)
@@ -50,12 +51,12 @@ urlpatterns = [
     # api/ go to the API documentation
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(drfapp_router.urls)),
+    path('api/', include(drfapp2_router.urls)),
     # Swagger Documentation
-    # just api go to the Swagger UI documentation
+    # just api go to the Swagger UI
     path('',schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('simple', drfapp_viewsets.simple_view),
-
 ]
 
 # Need this to correctly view media files in development
