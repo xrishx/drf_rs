@@ -19,16 +19,20 @@ from django.urls import path,include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from django.http import HttpResponse
 from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
-from drfapp.routers.routers import router as drfapp_router
-from drfapp.viewsets import drfapp_viewsets
-from drfapp2.routers.routers import router as drfapp2_router    
+from drfapp.viewsets.drfapp_viewsets import bookViewsets 
+import drfapp.viewsets.drfapp_viewsets
+from drfapp2.viewsets.drfapp2_viewsets import AuthorViewsets
+import drfapp.viewsets
+# from drfapp.routers.routers import router as drfapp_router
+# from drfapp2.routers.routers import router as drfapp2_router    
 
 router = routers.DefaultRouter()
-router.registry.extend(drfapp_router.registry)
+
+router.register('drfapp', bookViewsets, basename='drfapp')
+router.register('drfapp2', AuthorViewsets, basename='drfapp2')
 
 # Documentation for API using drf_yasg
 schema_view = get_schema_view(
@@ -50,13 +54,14 @@ urlpatterns = [
     # API Authentication and Documentation
     # api/ go to the API documentation
     path('api-auth/', include('rest_framework.urls')),
-    path('api/', include(drfapp_router.urls)),
-    path('api/', include(drfapp2_router.urls)),
+    path('api/', include(router.urls)),
+    # path('api/', include(drfapp_router.urls)),
+    # path('api/', include(drfapp2_router.urls)),
     # Swagger Documentation
     # just api go to the Swagger UI
     path('',schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('simple', drfapp_viewsets.simple_view),
+    path('simple', drfapp.viewsets.drfapp_viewsets.simple_view),
 ]
 
 # Need this to correctly view media files in development
