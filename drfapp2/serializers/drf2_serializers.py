@@ -4,7 +4,7 @@ from ..models import Author
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ['id', 'first_name', 'last_name', 'date_of_birth']
+        fields = '__all__'
 
 def validate(self, attrs):
     return super().validate(attrs)
