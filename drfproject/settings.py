@@ -37,17 +37,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Installed Packages >
     "rest_framework",
     "corsheaders",
     "drf_yasg",
     "django_filters",
     "requests",
+    # Created Apps >
     'drfapp',
     'drfapp2',
-    # "drfapp.viewsets",  
-    # "drfapp.serializers",  
-    # "drfapp.routers",  
-    # "drfapp.utilities", 
 ]
 
 MIDDLEWARE = [
@@ -80,8 +78,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "drfproject.wsgi.application"
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ]
@@ -142,3 +138,8 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 APPEND_SLASH = True
+
+# AUTH CONFIG
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

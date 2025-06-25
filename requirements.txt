@@ -6,3 +6,4 @@ requests
 pyyaml
 drf-yasg
 pillow
+psycopg2-binary

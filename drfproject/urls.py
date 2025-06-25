@@ -55,6 +55,7 @@ urlpatterns = [
     # api/ go to the API documentation
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
+    path('accounts/', include('django.contrib.auth.urls')),
     # path('api/', include(drfapp_router.urls)),
     # path('api/', include(drfapp2_router.urls)),
     # Swagger Documentation
