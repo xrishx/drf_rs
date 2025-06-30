@@ -21,7 +21,7 @@ def IsOwner(request):
     return False
 
 class BookPermission(BasePermission):
-    def has_permission(self, request, view):
+    def has_permissions(self, request, view):
         if view.action in ['list']:
             return True
         if view.action in ['retrieve']:
